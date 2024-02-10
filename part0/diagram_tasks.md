@@ -38,5 +38,22 @@ sequenceDiagram
     deactivate server
 ```
 
+## Task 0.5: Single page app diagram
 
+```mermaid
+sequenceDiagram
+    participant browser
+    participant server
 
+    Note right of browser: The browser adds the note to the list on the front-end side using DOM API (form submission handler calls 'redrawNotes()', which has all the logic).
+
+    browser->>server: POST https://studies.cs.helsinki.fi/exampleapp/new_note_spa
+    activate server
+
+    Note right of browser: The browser sends AJAX POST request with the note data to the server.
+
+    server-->>browser: "201 Created" response with payload {"message":"note created"}
+    deactivate server
+
+    Note left of server: The server stores the note data and returns 201 response confirming that the operation was successful.
+```
